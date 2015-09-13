@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ExampleDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ExampleDBModelStoreContainer">
+    <EntitySet Name="Logins" EntityType="ExampleDBModel.Store.Logins" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="People" EntityType="ExampleDBModel.Store.People" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Titles" EntityType="ExampleDBModel.Store.Titles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Subjects" EntityType="ExampleDBModel.Store.Subjects" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudentSubjects" EntityType="ExampleDBModel.Store.StudentSubjects" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GenderSet" EntityType="ExampleDBModel.Store.GenderSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="People_Student" EntityType="ExampleDBModel.Store.People_Student" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="People_Teacher" EntityType="ExampleDBModel.Store.People_Teacher" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudentTeacher" EntityType="ExampleDBModel.Store.StudentTeacher" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_StudentTeacher_Student" Association="ExampleDBModel.Store.FK_StudentTeacher_Student">
+      <End Role="Student" EntitySet="People_Student" />
+      <End Role="StudentTeacher" EntitySet="StudentTeacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentTeacher_Teacher" Association="ExampleDBModel.Store.FK_StudentTeacher_Teacher">
+      <End Role="Teacher" EntitySet="People_Teacher" />
+      <End Role="StudentTeacher" EntitySet="StudentTeacher" />
+    </AssociationSet>
+    <AssociationSet Name="StudentStudentSubject" Association="ExampleDBModel.Store.StudentStudentSubject">
+      <End Role="Student" EntitySet="People_Student" />
+      <End Role="StudentSubject" EntitySet="StudentSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="TitlePerson" Association="ExampleDBModel.Store.TitlePerson">
+      <End Role="Title" EntitySet="Titles" />
+      <End Role="Person" EntitySet="People" />
+    </AssociationSet>
+    <AssociationSet Name="SubjectStudentSubject" Association="ExampleDBModel.Store.SubjectStudentSubject">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="StudentSubject" EntitySet="StudentSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="TeacherSubject" Association="ExampleDBModel.Store.TeacherSubject">
+      <End Role="Teacher" EntitySet="People_Teacher" />
+      <End Role="Subject" EntitySet="Subjects" />
+    </AssociationSet>
+    <AssociationSet Name="GenderPerson" Association="ExampleDBModel.Store.GenderPerson">
+      <End Role="Gender" EntitySet="GenderSet" />
+      <End Role="Person" EntitySet="People" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_inherits_Person" Association="ExampleDBModel.Store.FK_Student_inherits_Person">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Student" EntitySet="People_Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacher_inherits_Person" Association="ExampleDBModel.Store.FK_Teacher_inherits_Person">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Teacher" EntitySet="People_Teacher" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Logins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="People">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="FirstName_TH" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FirstName_EN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName_TH" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName_EN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Age" Type="smallint" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Title_Id" Type="int" Nullable="false" />
+    <Property Name="Gender_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Titles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_TH" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name_EN" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subjects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_TH" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name_EN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Teacher_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentSubjects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Grade" Type="real" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Student_Id" Type="int" Nullable="false" />
+    <Property Name="Subject_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GenderSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_TH" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name_EN" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="People_Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="GPA" Type="real" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="People_Teacher">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="ClassRoom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentTeacher">
+    <Key>
+      <PropertyRef Name="Student_Id" />
+      <PropertyRef Name="Teachers_Id" />
+    </Key>
+    <Property Name="Student_Id" Type="int" Nullable="false" />
+    <Property Name="Teachers_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="StudentStudentSubject">
+    <End Role="Student" Type="ExampleDBModel.Store.People_Student" Multiplicity="1" />
+    <End Role="StudentSubject" Type="ExampleDBModel.Store.StudentSubjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentSubject">
+        <PropertyRef Name="Student_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TitlePerson">
+    <End Role="Title" Type="ExampleDBModel.Store.Titles" Multiplicity="1" />
+    <End Role="Person" Type="ExampleDBModel.Store.People" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="Title_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubjectStudentSubject">
+    <End Role="Subject" Type="ExampleDBModel.Store.Subjects" Multiplicity="1" />
+    <End Role="StudentSubject" Type="ExampleDBModel.Store.StudentSubjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentSubject">
+        <PropertyRef Name="Subject_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TeacherSubject">
+    <End Role="Teacher" Type="ExampleDBModel.Store.People_Teacher" Multiplicity="1" />
+    <End Role="Subject" Type="ExampleDBModel.Store.Subjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="Teacher_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GenderPerson">
+    <End Role="Gender" Type="ExampleDBModel.Store.GenderSet" Multiplicity="1" />
+    <End Role="Person" Type="ExampleDBModel.Store.People" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="Gender_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentTeacher_Student">
+    <End Role="Student" Type="ExampleDBModel.Store.People_Student" Multiplicity="1" />
+    <End Role="StudentTeacher" Type="ExampleDBModel.Store.StudentTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentTeacher">
+        <PropertyRef Name="Student_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentTeacher_Teacher">
+    <End Role="StudentTeacher" Type="ExampleDBModel.Store.StudentTeacher" Multiplicity="*" />
+    <End Role="Teacher" Type="ExampleDBModel.Store.People_Teacher" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentTeacher">
+        <PropertyRef Name="Teachers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_inherits_Person">
+    <End Role="Person" Type="ExampleDBModel.Store.People" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Student" Type="ExampleDBModel.Store.People_Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacher_inherits_Person">
+    <End Role="Person" Type="ExampleDBModel.Store.People" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Teacher" Type="ExampleDBModel.Store.People_Teacher" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExampleDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ExampleDBEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Logins" EntityType="ExampleDBModel.Login" />
+          <EntitySet Name="People" EntityType="ExampleDBModel.Person" />
+          <EntitySet Name="Titles" EntityType="ExampleDBModel.Title" />
+          <EntitySet Name="Subjects" EntityType="ExampleDBModel.Subject" />
+          <EntitySet Name="StudentSubjects" EntityType="ExampleDBModel.StudentSubject" />
+          <AssociationSet Name="StudentTeacher" Association="ExampleDBModel.StudentTeacher">
+            <End Role="Student" EntitySet="People" />
+            <End Role="Teacher" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="StudentStudentSubject" Association="ExampleDBModel.StudentStudentSubject">
+            <End Role="Student" EntitySet="People" />
+            <End Role="StudentSubject" EntitySet="StudentSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="TitlePerson" Association="ExampleDBModel.TitlePerson">
+            <End EntitySet="Titles" Role="Title" />
+            <End EntitySet="People" Role="Person" />
+          </AssociationSet>
+          <AssociationSet Name="SubjectStudentSubject" Association="ExampleDBModel.SubjectStudentSubject">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="StudentSubject" EntitySet="StudentSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="TeacherSubject" Association="ExampleDBModel.TeacherSubject">
+            <End Role="Teacher" EntitySet="People" />
+            <End Role="Subject" EntitySet="Subjects" />
+          </AssociationSet>
+          <EntitySet Name="GenderSet" EntityType="ExampleDBModel.Gender" />
+          <AssociationSet Name="GenderPerson" Association="ExampleDBModel.GenderPerson">
+            <End EntitySet="GenderSet" Role="Gender" />
+            <End EntitySet="People" Role="Person" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student" BaseType="ExampleDBModel.Person">
+          <Property Name="GPA" Type="Single" Nullable="false" />
+          <NavigationProperty Name="Teachers" Relationship="ExampleDBModel.StudentTeacher" FromRole="Student" ToRole="Teacher" />
+          <NavigationProperty Name="StudentSubjects" Relationship="ExampleDBModel.StudentStudentSubject" FromRole="Student" ToRole="StudentSubject" />
+        </EntityType>
+        <EntityType Name="Teacher" BaseType="ExampleDBModel.Person">
+          <Property Name="ClassRoom" Type="String" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="ExampleDBModel.StudentTeacher" FromRole="Teacher" ToRole="Student" />
+          <NavigationProperty Name="Subjects" Relationship="ExampleDBModel.TeacherSubject" FromRole="Teacher" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="FirstName" Nullable="false" Type="ExampleDBModel.Name" />
+          <Property Name="LastName" Nullable="false" Type="ExampleDBModel.Name" />
+          <Property Name="Age" Nullable="false" Type="Int16" />
+          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="UpdatedDate" Nullable="false" Type="DateTime" />
+          <NavigationProperty Name="Title" Relationship="ExampleDBModel.TitlePerson" FromRole="Person" ToRole="Title" />
+          <NavigationProperty Name="Gender" Relationship="ExampleDBModel.GenderPerson" FromRole="Person" ToRole="Gender" />
+        </EntityType>
+        <EntityType Name="Title">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="ExampleDBModel.Name" Nullable="false" />
+          <NavigationProperty Name="People" Relationship="ExampleDBModel.TitlePerson" FromRole="Title" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="ExampleDBModel.Name" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="StudentSubjects" Relationship="ExampleDBModel.SubjectStudentSubject" FromRole="Subject" ToRole="StudentSubject" />
+          <NavigationProperty Name="Teacher" Relationship="ExampleDBModel.TeacherSubject" FromRole="Subject" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="StudentSubject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Grade" Type="Single" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="ExampleDBModel.StudentStudentSubject" FromRole="StudentSubject" ToRole="Student" />
+          <NavigationProperty Name="Subject" Relationship="ExampleDBModel.SubjectStudentSubject" FromRole="StudentSubject" ToRole="Subject" />
+        </EntityType>
+        <Association Name="StudentTeacher">
+          <End Type="ExampleDBModel.Student" Role="Student" Multiplicity="*" />
+          <End Type="ExampleDBModel.Teacher" Role="Teacher" Multiplicity="*" />
+        </Association>
+        <Association Name="StudentStudentSubject">
+          <End Type="ExampleDBModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="ExampleDBModel.StudentSubject" Role="StudentSubject" Multiplicity="*" />
+        </Association>
+        <Association Name="TitlePerson">
+          <End Type="ExampleDBModel.Title" Multiplicity="1" Role="Title" />
+          <End Type="ExampleDBModel.Person" Multiplicity="*" Role="Person" />
+        </Association>
+        <Association Name="SubjectStudentSubject">
+          <End Type="ExampleDBModel.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="ExampleDBModel.StudentSubject" Role="StudentSubject" Multiplicity="*" />
+        </Association>
+        <Association Name="TeacherSubject">
+          <End Type="ExampleDBModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="ExampleDBModel.Subject" Role="Subject" Multiplicity="*" />
+        </Association>
+        <ComplexType Name="Name" >
+          <Property Type="String" Name="TH" Nullable="false" />
+          <Property Type="String" Name="EN" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="ExampleDBModel.Name" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="ExampleDBModel.GenderPerson" FromRole="Gender" ToRole="Person" />
+        </EntityType>
+        <Association Name="GenderPerson">
+          <End Type="ExampleDBModel.Gender" Multiplicity="1" Role="Gender" />
+          <End Type="ExampleDBModel.Person" Multiplicity="*" Role="Person" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExampleDBModelStoreContainer" CdmEntityContainer="ExampleDBEntities">
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleDBModel.Login)">
+        <MappingFragment StoreEntitySet="Logins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleDBModel.Person)">
+        <MappingFragment StoreEntitySet="People">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ComplexProperty Name="FirstName" TypeName="ExampleDBModel.Name">
+            <ScalarProperty Name="TH" ColumnName="FirstName_TH" />
+            <ScalarProperty Name="EN" ColumnName="FirstName_EN" />
+          </ComplexProperty>
+          <ComplexProperty Name="LastName" TypeName="ExampleDBModel.Name">
+            <ScalarProperty Name="TH" ColumnName="LastName_TH" />
+            <ScalarProperty Name="EN" ColumnName="LastName_EN" />
+          </ComplexProperty>
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleDBModel.Student)">
+        <MappingFragment StoreEntitySet="People_Student">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GPA" ColumnName="GPA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleDBModel.Teacher)">
+        <MappingFragment StoreEntitySet="People_Teacher">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClassRoom" ColumnName="ClassRoom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Titles">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleDBModel.Title)">
+        <MappingFragment StoreEntitySet="Titles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ComplexProperty Name="Name" TypeName="ExampleDBModel.Name">
+            <ScalarProperty Name="TH" ColumnName="Name_TH" />
+            <ScalarProperty Name="EN" ColumnName="Name_EN" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleDBModel.Subject)">
+        <MappingFragment StoreEntitySet="Subjects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ComplexProperty Name="Name" TypeName="ExampleDBModel.Name">
+            <ScalarProperty Name="TH" ColumnName="Name_TH" />
+            <ScalarProperty Name="EN" ColumnName="Name_EN" />
+          </ComplexProperty>
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentSubjects">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleDBModel.StudentSubject)">
+        <MappingFragment StoreEntitySet="StudentSubjects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GenderSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ExampleDBModel.Gender)">
+        <MappingFragment StoreEntitySet="GenderSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ComplexProperty Name="Name" TypeName="ExampleDBModel.Name">
+            <ScalarProperty Name="TH" ColumnName="Name_TH" />
+            <ScalarProperty Name="EN" ColumnName="Name_EN" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="StudentTeacher" TypeName="ExampleDBModel.StudentTeacher" StoreEntitySet="StudentTeacher">
+      <EndProperty Name="Student">
+        <ScalarProperty Name="Id" ColumnName="Student_Id" />
+      </EndProperty>
+      <EndProperty Name="Teacher">
+        <ScalarProperty Name="Id" ColumnName="Teachers_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StudentStudentSubject" TypeName="ExampleDBModel.StudentStudentSubject" StoreEntitySet="StudentSubjects">
+      <EndProperty Name="Student">
+        <ScalarProperty Name="Id" ColumnName="Student_Id" />
+      </EndProperty>
+      <EndProperty Name="StudentSubject">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TitlePerson" TypeName="ExampleDBModel.TitlePerson" StoreEntitySet="People">
+      <EndProperty Name="Title">
+        <ScalarProperty Name="Id" ColumnName="Title_Id" />
+      </EndProperty>
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SubjectStudentSubject" TypeName="ExampleDBModel.SubjectStudentSubject" StoreEntitySet="StudentSubjects">
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Subject_Id" />
+      </EndProperty>
+      <EndProperty Name="StudentSubject">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TeacherSubject" TypeName="ExampleDBModel.TeacherSubject" StoreEntitySet="Subjects">
+      <EndProperty Name="Teacher">
+        <ScalarProperty Name="Id" ColumnName="Teacher_Id" />
+      </EndProperty>
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GenderPerson" TypeName="ExampleDBModel.GenderPerson" StoreEntitySet="People">
+      <EndProperty Name="Gender">
+        <ScalarProperty Name="Id" ColumnName="Gender_Id" />
+      </EndProperty>
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
