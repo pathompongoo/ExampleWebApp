@@ -13,34 +13,40 @@
     </ol>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="section_content" runat="server">
-    <div class="form-group">
-        <label for="studentTitleName">คำนำหน้าชื่อ</label>
-        <asp:DropDownList ID="TitleDropDownList" runat="server" 
-            CssClass="form-control" 
-            DataSourceID="EntityDataSource1" DataTextField="Name.TH" DataValueField="Id"></asp:DropDownList>
-        <ef:EntityDataSource runat="server" ID="EntityDataSource1" 
-            OnContextCreating="EntityDataSource1_ContextCreating"
-            EntitySetName="Titles"></ef:EntityDataSource>
+    <form runat="server">
+        <div class="form-group">
+            <label for="studentTitleName">คำนำหน้าชื่อ</label>
+            <asp:DropDownList ID="TitleDropDownList" runat="server"
+                CssClass="form-control"
+                DataSourceID="EntityDataSource1" DataTextField="Name.TH" DataValueField="Id">
+            </asp:DropDownList>
+            <ef:EntityDataSource runat="server" ID="EntityDataSource1"
+                OnContextCreating="EntityDataSource1_ContextCreating"
+                EntitySetName="Titles">
+            </ef:EntityDataSource>
 
-        <label for="studentFirstName">ชื่อ (ภาษาไทย)</label>
-        <asp:TextBox ID="FirstNameTHTextBox" CssClass="form-control" runat="server"></asp:TextBox>
-        <label for="studentLastName">นามสกุล (ภาษาไทย)</label>
-        <asp:TextBox ID="LastNameTHTextBox" CssClass="form-control" runat="server"></asp:TextBox>
-        <label for="studentFirstName">ชื่อ (ภาษาอังกฤษ)</label>
-        <asp:TextBox ID="FirstNameENTextBox" CssClass="form-control" runat="server"></asp:TextBox>
-        <label for="studentLastName">นามสกุล (ภาษาอังกฤษ)</label>
-        <asp:TextBox ID="LastNameENTextBox" CssClass="form-control" runat="server"></asp:TextBox>
-        <label for="gender">เพศ</label>
-        <asp:DropDownList ID="GenderDropDownList" runat="server" DataSourceID="EntityDataSource2"
-            DataTextField="Name.TH" DataValueField="Id" CssClass="form-control"></asp:DropDownList>
-        <ef:EntityDataSource runat="server" ID="EntityDataSource2"
-            OnContextCreating="EntityDataSource1_ContextCreating"
-            EntitySetName="GenderSet"></ef:EntityDataSource>
-        <label for="age">อายุ</label>
-        <asp:TextBox ID="AgeTextBox" CssClass="form-control" runat="server"></asp:TextBox>
-        <label for="gpa">เกรดเฉลี่ย</label>
-        <asp:TextBox ID="GPATextBox" CssClass="form-control" runat="server"></asp:TextBox>
-    </div>
-    <asp:Button ID="SaveButton" runat="server" Text="Save" CssClass="btn btn-default" 
-        OnClick="SaveButton_Click" />
+            <label for="studentFirstName">ชื่อ (ภาษาไทย)</label>
+            <asp:TextBox ID="FirstNameTHTextBox" CssClass="form-control" runat="server"></asp:TextBox>
+            <label for="studentLastName">นามสกุล (ภาษาไทย)</label>
+            <asp:TextBox ID="LastNameTHTextBox" CssClass="form-control" runat="server"></asp:TextBox>
+            <label for="studentFirstName">ชื่อ (ภาษาอังกฤษ)</label>
+            <asp:TextBox ID="FirstNameENTextBox" CssClass="form-control" runat="server"></asp:TextBox>
+            <label for="studentLastName">นามสกุล (ภาษาอังกฤษ)</label>
+            <asp:TextBox ID="LastNameENTextBox" CssClass="form-control" runat="server"></asp:TextBox>
+            <label for="gender">เพศ</label>
+            <asp:DropDownList ID="GenderDropDownList" runat="server" DataSourceID="EntityDataSource2"
+                DataTextField="Name.TH" DataValueField="Id" CssClass="form-control">
+            </asp:DropDownList>
+            <ef:EntityDataSource runat="server" ID="EntityDataSource2"
+                OnContextCreating="EntityDataSource1_ContextCreating"
+                EntitySetName="GenderSet">
+            </ef:EntityDataSource>
+            <label for="age">อายุ</label>
+            <asp:TextBox ID="AgeTextBox" CssClass="form-control" runat="server"></asp:TextBox>
+            <label for="gpa">เกรดเฉลี่ย</label>
+            <asp:TextBox ID="GPATextBox" CssClass="form-control" runat="server"></asp:TextBox>
+        </div>
+        <asp:Button ID="SaveButton" runat="server" Text="Save" CssClass="btn btn-default"
+            OnClick="SaveButton_Click" />
+    </form>
 </asp:Content>

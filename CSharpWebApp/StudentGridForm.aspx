@@ -13,17 +13,20 @@
     </ol>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="section_content" runat="server">
-    <asp:GridView ID="GridView1" runat="server" DataSourceID="EntityDataSource1" 
-        CssClass="table table-striped table-bordered table-condensed table-responsive box-body" 
-        EmptyDataText="There is no some data on database.">
-        <Columns>
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
-                ButtonType="Button" ShowHeader="True" HeaderText="Command" 
-                ItemStyle-CssClass="btn btn-sm btn-default"></asp:CommandField>
-        </Columns>
-    </asp:GridView>
-    <ef:EntityDataSource runat="server" ID="EntityDataSource1"
-        OnContextCreating="EntityDataSource1_ContextCreating"
-         EntitySetName="People" EntityTypeFilter="Student" 
-         EnableDelete="true" EnableUpdate="true"></ef:EntityDataSource>
+    <form runat="server">
+        <asp:GridView ID="GridView1" runat="server" DataSourceID="EntityDataSource1"
+            CssClass="table table-striped table-bordered table-condensed table-responsive box-body"
+            EmptyDataText="There is no some data on database.">
+            <Columns>
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True"
+                    ButtonType="Button" ShowHeader="True" HeaderText="Command"
+                    ItemStyle-CssClass="btn btn-sm btn-default"></asp:CommandField>
+            </Columns>
+        </asp:GridView>
+        <ef:EntityDataSource runat="server" ID="EntityDataSource1"
+            OnContextCreating="EntityDataSource1_ContextCreating"
+            EntitySetName="People" EntityTypeFilter="Student"
+            EnableDelete="true" EnableUpdate="true">
+        </ef:EntityDataSource>
+    </form>
 </asp:Content>

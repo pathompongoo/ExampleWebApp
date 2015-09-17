@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="StudentViewDataSet" targetNamespace="http://tempuri.org/StudentViewDataSet.xsd" xmlns:mstns="http://tempuri.org/StudentViewDataSet.xsd" xmlns="http://tempuri.org/StudentViewDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ExampleDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ExampleDBConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ExampleDBConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StudentViewTableAdapter" GeneratorDataComponentClassName="StudentViewTableAdapter" Name="StudentView" UserDataComponentName="StudentViewTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ExampleDBConnectionString (Web.config)" DbObjectName="dbo.StudentView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Id, FirstName_TH, LastName_TH, Name_TH FROM dbo.StudentView</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="FirstName_TH" DataSetColumn="FirstName_TH" />
+              <Mapping SourceColumn="LastName_TH" DataSetColumn="LastName_TH" />
+              <Mapping SourceColumn="Name_TH" DataSetColumn="Name_TH" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="StudentViewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="StudentViewDataSet" msprop:Generator_UserDSName="StudentViewDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="StudentView" msprop:Generator_TableClassName="StudentViewDataTable" msprop:Generator_TableVarName="tableStudentView" msprop:Generator_TablePropName="StudentView" msprop:Generator_RowDeletingName="StudentViewRowDeleting" msprop:Generator_RowChangingName="StudentViewRowChanging" msprop:Generator_RowEvHandlerName="StudentViewRowChangeEventHandler" msprop:Generator_RowDeletedName="StudentViewRowDeleted" msprop:Generator_UserTableName="StudentView" msprop:Generator_RowChangedName="StudentViewRowChanged" msprop:Generator_RowEvArgName="StudentViewRowChangeEvent" msprop:Generator_RowClassName="StudentViewRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="FirstName_TH" msprop:Generator_ColumnVarNameInTable="columnFirstName_TH" msprop:Generator_ColumnPropNameInRow="FirstName_TH" msprop:Generator_ColumnPropNameInTable="FirstName_THColumn" msprop:Generator_UserColumnName="FirstName_TH">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LastName_TH" msprop:Generator_ColumnVarNameInTable="columnLastName_TH" msprop:Generator_ColumnPropNameInRow="LastName_TH" msprop:Generator_ColumnPropNameInTable="LastName_THColumn" msprop:Generator_UserColumnName="LastName_TH">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Name_TH" msprop:Generator_ColumnVarNameInTable="columnName_TH" msprop:Generator_ColumnPropNameInRow="Name_TH" msprop:Generator_ColumnPropNameInTable="Name_THColumn" msprop:Generator_UserColumnName="Name_TH">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:StudentView" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
