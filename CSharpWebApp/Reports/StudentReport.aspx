@@ -9,8 +9,8 @@
         <small>Report</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="Default.aspx"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="StudentForm.aspx">Student Management</a></li>
+        <li><a href="/Default.aspx"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="/StudentForm.aspx">Student Management</a></li>
         <li class="active">Report</li>
     </ol>
 </asp:Content>
