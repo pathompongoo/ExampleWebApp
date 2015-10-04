@@ -85,6 +85,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ExampleDB.mdf" />
+    <Content Include="App_Data\ExampleDB_log.ldf">
+      <DependentUpon>ExampleDB.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\Views\dbo.StudentView.sql" />
     <Content Include="packages.config" />
     <EntityDeploy Include="Models\ExampleDB.edmx">
@@ -95,6 +99,8 @@
       <DependentUpon>ExampleDB.edmx</DependentUpon>
     </Content>
     <Content Include="Reports\StudentReport.aspx" />
+    <Content Include="Screenshots\Mobile.PNG" />
+    <Content Include="Screenshots\Web.PNG" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Reports\StudentViewDataSet.xsc">
       <DependentUpon>StudentViewDataSet.xsd</DependentUpon>
@@ -134,13 +140,6 @@
     <Content Include="admin-lte\js\app.js" />
     <Content Include="admin-lte\js\app.min.js" />
     <Content Include="admin-lte\sample.html" />
-    <Content Include="App_Data\ExampleDB.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\ExampleDB_log.ldf">
-      <DependentUpon>ExampleDB.mdf</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
